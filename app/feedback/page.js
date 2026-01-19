@@ -11,106 +11,171 @@ export default function Feedback() {
   const panels = [
     {
       id: 1,
-      title: 'Panel 1: Cybersecurity Fundamentals',
+      title: 'Panel 1: The Current State of Cybersecurity Education',
       questions: [
-        'Was the content relevant and informative?',
-        'Did the speaker present clearly and effectively?',
-        'Was the session well-organized and structured?',
-        'Did you find the examples and case studies helpful?',
-        'Would you recommend this session to others?',
-        'Was the technical depth appropriate for the audience?',
-        'Did the speaker engage with the audience effectively?',
-        'Were your questions addressed satisfactorily?',
-        'Was the pace of presentation suitable?',
-        'Did you learn new concepts or techniques?',
-        'Were the visual aids (slides/demos) effective?',
-        'Was the time allocated for this panel sufficient?',
-        'Did the content meet your expectations?',
-        'Were real-world applications discussed adequately?',
-        'Did the speaker demonstrate subject expertise?',
-        'Was the Q&A session productive?',
-        'Would you attend advanced sessions on this topic?',
-        'Did the panel address current industry challenges?',
-        'Were practical takeaways provided?',
-        'Overall, was this panel valuable to you?'
+        { type: 'rating', text: 'How relevant was the topic in the current cybersecurity landscape in India?' },
+        { type: 'rating', text: 'How would you rate the quality of this panel\'s discussion?' },
+        { type: 'rating', text: 'How would you rate the expertise and clarity of the panelist?' },
+        { type: 'rating', text: 'How would you rate the depth of the technical/strategic discussion?' },
+        { type: 'rating', text: 'To what extent did this panel provide you with new, actionable insights or factual data that you were previously unaware of?' },
+        { type: 'rating', text: 'How effective was the session in connecting you with the right mentors or peers?' },
+        { type: 'rating', text: 'How effectively did the panel assess the strengths and weaknesses of the current landscape of cybersecurity education?' },
+        { 
+          type: 'mcq', 
+          text: 'In your opinion, what is the most important thing that needs to be improved/included in Indian Cyber Education right now?',
+          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others']
+        },
+        { type: 'yesno', text: 'Do you feel the need for improvement in teaching pedagogy for cybersecurity awareness in India?' },
+        { type: 'rating', text: 'How do you rate the industry efforts on Cybersecurity education and awareness in India?' },
+        { 
+          type: 'mcq', 
+          text: 'What do you perceive as the most significant roadblock of the panel discussion "The Current State of Cybersecurity Education"?',
+          options: [
+            'Lack of a standardized national curriculum',
+            'Limited infrastructure and funding in schools',
+            'Rapidly Evolving Threats leading to a disconnect from the academic syllabus',
+            'Lack of Cyber Awareness among citizens',
+            'Other'
+          ]
+        },
+        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific panel topic at the next conference?' },
+        { type: 'rating', text: 'What is your overall rating for this specific panel session?' },
+        { type: 'comment', text: 'What is one "Key Takeaway" from today that you would like to get implemented in your organization/institute?' },
+        { type: 'comment', text: 'Do you have any other suggestions/remarks for the conference?' }
       ]
     },
     {
       id: 2,
-      title: 'Panel 2: Threat Intelligence & Analysis',
+      title: 'Panel 2: Designing a Future-Ready Cybersecurity Curriculum',
       questions: [
-        'Was the topic engaging and relevant?',
-        'Did the panel address current cyber threats?',
-        'Was there adequate time for discussion?',
-        'Were your questions answered satisfactorily?',
-        'Did you gain new insights into threat intelligence?',
-        'Was the presentation style effective?',
-        'Did the content meet your expectations?',
-        'Was the technical depth appropriate?',
-        'Did the panel provide actionable takeaways?',
-        'Would you attend a similar session?',
-        'Were case studies and examples relatable?',
-        'Did speakers demonstrate practical experience?',
-        'Was the analysis methodology explained clearly?',
-        'Did you learn about new threat vectors?',
-        'Were mitigation strategies discussed effectively?',
-        'Was the panel interactive and engaging?',
-        'Did the content align with industry standards?',
-        'Were tools and techniques demonstrated?',
-        'Would you implement learnings in your work?',
-        'Overall, was this panel beneficial?'
+        { type: 'rating', text: 'How relevant was the topic in the current cybersecurity landscape in India?' },
+        { type: 'rating', text: 'How would you rate the quality of this panel\'s discussion?' },
+        { type: 'rating', text: 'How would you rate the expertise and clarity of the panelist?' },
+        { type: 'rating', text: 'How would you rate the depth of the technical/strategic discussion?' },
+        { type: 'rating', text: 'To what extent did this panel provide you with new, actionable insights or factual data that you were previously unaware of?' },
+        { type: 'rating', text: 'How effective was the session in connecting you with the right mentors or peers?' },
+        { type: 'rating', text: 'How effectively did the panel assess the strengths and weaknesses of the current landscape of cybersecurity education?' },
+        { 
+          type: 'mcq', 
+          text: 'In your opinion, what is the most important thing that needs to be improved/included in Indian Cyber Education right now?',
+          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others']
+        },
+        { type: 'yesno', text: 'Do you feel the need for improvement in teaching pedagogy for cybersecurity awareness in India?' },
+        { 
+          type: 'mcq', 
+          text: 'Do you prefer a Standardized National Curriculum (one syllabus for all) or University Autonomy (institutes design their own)?',
+          options: ['Standardized National Curriculum', 'University Autonomy']
+        },
+        { 
+          type: 'mcq', 
+          text: 'What do you believe is the ideal update cycle for a cyber curriculum to remain \'Future-Ready\'?',
+          options: [
+            'Every 6 Months',
+            'Annually',
+            'Every 2-3 Years',
+            'Real-time (Continuous updates via Industry Partners)'
+          ]
+        },
+        { type: 'yesno', text: 'Can we establish a \'Student Cyber Volunteer Corps\' where students earn credits for managing helplines such as \'1930\'?' },
+        { 
+          type: 'mcq', 
+          text: 'What do you perceive as the most significant roadblock of the panel discussion "Designing a Future-Ready Cybersecurity Curriculum"?',
+          options: [
+            'Acute Teacher shortage',
+            'Inadequate teacher training',
+            'Digital divide and infrastructure gaps',
+            'Uneven implementation and funding issues',
+            'Others'
+          ]
+        },
+        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific panel topic at the next conference?' },
+        { type: 'rating', text: 'What is your overall rating for this specific panel session?' },
+        { type: 'comment', text: 'What is one "Key Takeaway" from today that you would like to get implemented in your organization/institute?' },
+        { type: 'comment', text: 'Do you have any other suggestions/remarks for the conference?' }
       ]
     },
     {
       id: 3,
-      title: 'Panel 3: Incident Response & Forensics',
+      title: 'Panel 3: Attracting talent to cybersecurity: Challenges and Opportunities',
       questions: [
-        'Was the presentation style effective and clear?',
-        'Did the content meet your learning expectations?',
-        'Was the technical depth appropriate for you?',
-        'Did the panel provide actionable takeaways?',
-        'Would you attend similar forensics sessions?',
-        'Were incident response procedures explained well?',
-        'Did speakers share practical experience?',
-        'Was the forensic methodology clear?',
-        'Did you learn about investigation techniques?',
-        'Were evidence handling practices covered?',
-        'Was the panel content up-to-date?',
-        'Did examples demonstrate real scenarios?',
-        'Were tools and technologies discussed?',
-        'Did the Q&A session add value?',
-        'Was the response framework explained clearly?',
-        'Did you gain confidence in handling incidents?',
-        'Were legal aspects addressed adequately?',
-        'Was the session well-paced?',
-        'Would you recommend this to colleagues?',
-        'Overall, did this panel enhance your skills?'
+        { type: 'rating', text: 'How relevant was the topic in the current cybersecurity landscape in India?' },
+        { type: 'rating', text: 'How would you rate the quality of this panel\'s discussion?' },
+        { type: 'rating', text: 'How would you rate the expertise and clarity of the panelist?' },
+        { type: 'rating', text: 'How would you rate the depth of the technical/strategic discussion?' },
+        { type: 'rating', text: 'To what extent did this panel provide you with new, actionable insights or factual data that you were previously unaware of?' },
+        { type: 'rating', text: 'How effective was the session in connecting you with the right mentors or peers?' },
+        { type: 'rating', text: 'How effectively did the panel assess the strengths and weaknesses of the current landscape of cybersecurity education?' },
+        { 
+          type: 'mcq', 
+          text: 'In your opinion, what is the most important thing that needs to be improved/included in Indian Cyber Education right now?',
+          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others']
+        },
+        { type: 'yesno', text: 'Do you feel the need for improvement in teaching pedagogy for cybersecurity awareness in India?' },
+        { type: 'yesno', text: 'Do you feel there is a significant gap between the number of people who consider careers in cybersecurity and those in SDE/AI/ML/Data Science?' },
+        { type: 'yesno', text: 'Does the current education curriculum (up to Senior Secondary level) cover enough cybersecurity fundamentals to invoke interest in talented students about the field?' },
+        { 
+          type: 'mcq', 
+          text: 'What would you consider a major obstacle for someone aspiring to be a cybersecurity professional?',
+          options: [
+            'Payscale',
+            'Weak advertisement (As in the field being niche)',
+            'Pricing of Certifications',
+            'Infrastructural restrictions'
+          ]
+        },
+        { 
+          type: 'mcq', 
+          text: 'What do you perceive as the most significant roadblock of the panel discussion "Attracting talent to cybersecurity: Challenges and Opportunities"?',
+          options: [
+            'Uncompetitive salaries and reluctance to upscale',
+            'Lack of soft skills and niche expertise',
+            'Poor awareness and stigma',
+            'Regional skill disparities',
+            'Others'
+          ]
+        },
+        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific panel topic at the next conference?' },
+        { type: 'rating', text: 'What is your overall rating for this specific panel session?' },
+        { type: 'comment', text: 'What is one "Key Takeaway" from today that you would like to get implemented in your organization/institute?' },
+        { type: 'comment', text: 'Do you have any other suggestions/remarks for the conference?' }
       ]
     },
     {
       id: 4,
-      title: 'Panel 4: Future of Cybersecurity',
+      title: 'Panel 4: Bridging Academia and Industry in Cybersecurity Education',
       questions: [
-        'Was the session valuable and insightful?',
-        'Did the speakers demonstrate expertise?',
-        'Was the Q&A session productive?',
-        'Did you learn something new about future trends?',
-        'Would you like more sessions on emerging topics?',
-        'Were AI/ML applications in security discussed?',
-        'Did the panel cover quantum computing threats?',
-        'Was the future outlook realistic and practical?',
-        'Did speakers address skill development needs?',
-        'Were career opportunities in cybersecurity explored?',
-        'Was innovation in security technologies covered?',
-        'Did the panel discuss regulatory changes?',
-        'Were emerging threat landscapes analyzed?',
-        'Did you gain insights into industry direction?',
-        'Was the content forward-thinking?',
-        'Were predictions backed by data/research?',
-        'Did speakers inspire further learning?',
-        'Was the panel\'s vision actionable?',
-        'Would you prepare differently after this session?',
-        'Overall, did this panel shape your perspective?'
+        { type: 'rating', text: 'How relevant was the topic in the current cybersecurity landscape in India?' },
+        { type: 'rating', text: 'How would you rate the quality of this panel\'s discussion?' },
+        { type: 'rating', text: 'How would you rate the expertise and clarity of the panelist?' },
+        { type: 'rating', text: 'How would you rate the depth of the technical/strategic discussion?' },
+        { type: 'rating', text: 'To what extent did this panel provide you with new, actionable insights or factual data that you were previously unaware of?' },
+        { type: 'rating', text: 'How effective was the session in connecting you with the right mentors or peers?' },
+        { type: 'rating', text: 'How effectively did the panel assess the strengths and weaknesses of the current landscape of cybersecurity education?' },
+        { 
+          type: 'mcq', 
+          text: 'In your opinion, what is the most important thing that needs to be improved/included in Indian Cyber Education right now?',
+          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others']
+        },
+        { type: 'yesno', text: 'Do you feel the need for improvement in teaching pedagogy for cybersecurity awareness in India?' },
+        { type: 'yesno', text: 'Did the discussion provide actionable insights on how academic programs can better align with real-world cybersecurity threats?' },
+        { type: 'rating', text: 'On a scale of 1-5, how severe is the disconnect between academia and industry?' },
+        { 
+          type: 'mcq', 
+          text: 'What do you perceive as the most significant roadblock of the panel discussion "Bridging Academia and Industry in Cybersecurity Education"?',
+          options: [
+            'Curriculum misalignment',
+            'Gaps in industry-academia collaboration',
+            'Evaluation criteria mismatch',
+            'Lack of startup ecosystem integration',
+            'Others'
+          ]
+        },
+        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific panel topic at the next conference?' },
+        { type: 'rating', text: 'What is your overall rating for this specific panel session?' },
+        { type: 'comment', text: 'What is one "Key Takeaway" from today that you would like to get implemented in your organization/institute?' },
+        { type: 'comment', text: 'What is one topic related to cybersecurity education that was not covered but should be included in future panels?' },
+        { type: 'rating', text: 'In your opinion, did all of the panel discussions align with the objectives of the conference "Roadmap for Cybersecurity Education and Talent Development"?' },
+        { type: 'comment', text: 'Do you have any other suggestions/remarks for the conference?' }
       ]
     }
   ];
@@ -137,10 +202,10 @@ export default function Feedback() {
     }
   };
 
-  const handleRatingChange = (panelId, questionIndex, rating) => {
+  const handleResponseChange = (panelId, questionIndex, value) => {
     setResponses(prev => ({
       ...prev,
-      [`panel${panelId}_q${questionIndex}`]: rating
+      [`panel${panelId}_q${questionIndex}`]: value
     }));
   };
 
@@ -153,15 +218,16 @@ export default function Feedback() {
     );
 
     if (!allAnswered) {
-      alert('Please rate all questions before submitting.');
+      alert('Please answer all questions before submitting.');
       return;
     }
 
     setLoading(true);
     try {
       const panelResponses = panel.questions.map((question, idx) => ({
-        question,
-        rating: responses[`panel${panelId}_q${idx}`] || 0
+        question: question.text,
+        type: question.type,
+        answer: responses[`panel${panelId}_q${idx}`] || ''
       }));
 
       await fetch('/api/submit-feedback', {
@@ -290,53 +356,23 @@ export default function Feedback() {
 
                   {!submitted[panel.id] ? (
                     <>
-                      {/* Rating Scale Legend */}
-                      <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-slate-800/50 border border-blue-500/20 rounded-lg">
-                        <p className="text-cyan-400 font-semibold text-xs sm:text-sm mb-2 uppercase tracking-wider">Rating Scale:</p>
-                        <div className="grid grid-cols-5 gap-1 sm:gap-2 text-center text-xs sm:text-sm">
-                          <div className="text-slate-400">
-                            <div className="font-bold text-red-400">1</div>
-                            <div className="hidden sm:block">Poor</div>
-                          </div>
-                          <div className="text-slate-400">
-                            <div className="font-bold text-orange-400">2</div>
-                            <div className="hidden sm:block">Fair</div>
-                          </div>
-                          <div className="text-slate-400">
-                            <div className="font-bold text-yellow-400">3</div>
-                            <div className="hidden sm:block">Good</div>
-                          </div>
-                          <div className="text-slate-400">
-                            <div className="font-bold text-blue-400">4</div>
-                            <div className="hidden sm:block">Very Good</div>
-                          </div>
-                          <div className="text-slate-400">
-                            <div className="font-bold text-green-400">5</div>
-                            <div className="hidden sm:block">Excellent</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-3 sm:space-y-4 relative z-10">
+                      <div className="space-y-4 sm:space-y-5 relative z-10">
                         {panel.questions.map((question, idx) => (
                           <div key={idx} className="bg-slate-900/50 border border-blue-500/20 rounded-lg sm:rounded-xl p-3 sm:p-4 hover:border-cyan-400/50 transition-all duration-300">
-                            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-                              {/* Question */}
-                              <div className="flex-1 min-w-0">
-                                <p className="font-semibold text-white text-xs sm:text-sm md:text-base flex items-start gap-2">
-                                  <span className="text-cyan-400 flex-shrink-0 font-bold">{idx + 1}.</span>
-                                  <span>{question}</span>
-                                </p>
-                              </div>
-                              
-                              {/* Rating Buttons */}
-                              <div className="flex gap-1 sm:gap-2 justify-center sm:justify-end flex-shrink-0">
+                            <p className="font-semibold text-white mb-3 text-xs sm:text-sm md:text-base flex items-start gap-2">
+                              <span className="text-cyan-400 flex-shrink-0 font-bold">{idx + 1}.</span>
+                              <span>{question.text}</span>
+                            </p>
+                            
+                            {/* Rating Type */}
+                            {question.type === 'rating' && (
+                              <div className="flex gap-1 sm:gap-2 justify-start flex-wrap">
                                 {[1, 2, 3, 4, 5].map((rating) => (
                                   <button
                                     key={rating}
                                     type="button"
-                                    onClick={() => handleRatingChange(panel.id, idx, rating)}
-                                    className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg font-bold text-xs sm:text-sm md:text-base transition-all duration-300 ${
+                                    onClick={() => handleResponseChange(panel.id, idx, rating)}
+                                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg font-bold text-sm sm:text-base transition-all duration-300 ${
                                       responses[`panel${panel.id}_q${idx}`] === rating
                                         ? rating === 1 ? 'bg-red-500 text-white shadow-[0_0_15px_rgba(239,68,68,0.5)]'
                                         : rating === 2 ? 'bg-orange-500 text-white shadow-[0_0_15px_rgba(249,115,22,0.5)]'
@@ -350,7 +386,66 @@ export default function Feedback() {
                                   </button>
                                 ))}
                               </div>
-                            </div>
+                            )}
+
+                            {/* Yes/No Type */}
+                            {question.type === 'yesno' && (
+                              <div className="flex gap-3 sm:gap-4">
+                                <button
+                                  type="button"
+                                  onClick={() => handleResponseChange(panel.id, idx, 'Yes')}
+                                  className={`px-6 py-2 sm:px-8 sm:py-3 rounded-lg font-bold text-sm sm:text-base transition-all duration-300 ${
+                                    responses[`panel${panel.id}_q${idx}`] === 'Yes'
+                                      ? 'bg-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.5)]'
+                                      : 'bg-slate-800/50 text-slate-400 border border-slate-700 hover:border-cyan-400/50 hover:text-white'
+                                  }`}
+                                >
+                                  Yes
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleResponseChange(panel.id, idx, 'No')}
+                                  className={`px-6 py-2 sm:px-8 sm:py-3 rounded-lg font-bold text-sm sm:text-base transition-all duration-300 ${
+                                    responses[`panel${panel.id}_q${idx}`] === 'No'
+                                      ? 'bg-red-500 text-white shadow-[0_0_15px_rgba(239,68,68,0.5)]'
+                                      : 'bg-slate-800/50 text-slate-400 border border-slate-700 hover:border-cyan-400/50 hover:text-white'
+                                  }`}
+                                >
+                                  No
+                                </button>
+                              </div>
+                            )}
+
+                            {/* MCQ Type */}
+                            {question.type === 'mcq' && (
+                              <div className="space-y-2">
+                                {question.options.map((option, optIdx) => (
+                                  <button
+                                    key={optIdx}
+                                    type="button"
+                                    onClick={() => handleResponseChange(panel.id, idx, option)}
+                                    className={`w-full text-left px-4 py-3 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 ${
+                                      responses[`panel${panel.id}_q${idx}`] === option
+                                        ? 'bg-cyan-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.5)] border-2 border-cyan-400'
+                                        : 'bg-slate-800/50 text-slate-300 border border-slate-700 hover:border-cyan-400/50 hover:bg-slate-800'
+                                    }`}
+                                  >
+                                    {String.fromCharCode(97 + optIdx)}. {option}
+                                  </button>
+                                ))}
+                              </div>
+                            )}
+
+                            {/* Comment Type */}
+                            {question.type === 'comment' && (
+                              <textarea
+                                placeholder="Enter your response here..."
+                                value={responses[`panel${panel.id}_q${idx}`] || ''}
+                                onChange={(e) => handleResponseChange(panel.id, idx, e.target.value)}
+                                className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-slate-900/80 border border-blue-500/30 rounded-lg sm:rounded-xl focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/50 transition-all duration-300 text-white placeholder-slate-600 tracking-wide text-xs sm:text-sm min-h-[80px] sm:min-h-[100px]"
+                                rows="3"
+                              />
+                            )}
                           </div>
                         ))}
                       </div>
@@ -372,8 +467,8 @@ export default function Feedback() {
                             </span>
                           ) : (
                             <>
-                              <span className="hidden sm:inline">Submit {panel.title} Feedback</span>
-                              <span className="sm:hidden">Submit Feedback</span>
+                              <span className="hidden sm:inline">Submit Feedback</span>
+                              <span className="sm:hidden">Submit</span>
                             </>
                           )}
                         </div>
@@ -397,6 +492,9 @@ export default function Feedback() {
           <p className="text-slate-500 text-xs sm:text-sm tracking-wide">
             © National Forensic Sciences University, Delhi Campus
           </p>
+          <p className="text-slate-600 text-[10px] sm:text-xs tracking-wide">
+    Created and managed by Tamanna Khurana
+  </p>
         </div>
       </div>
 
