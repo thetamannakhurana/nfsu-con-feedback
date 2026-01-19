@@ -85,20 +85,20 @@ export default function Home() {
             <div className="mb-4 sm:mb-6 inline-block">
               <div className="relative">
                 {/* NFSU Logo */}
-                <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto bg-white rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(14,165,233,0.5)] sm:shadow-[0_0_50px_rgba(14,165,233,0.5)] p-2">
-                  <img 
-                    src="/nfsu-logo.png" 
-                    alt="NFSU Logo" 
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                      // Fallback if image not found
-                      e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = '<span class="text-blue-600 font-bold text-2xl">NFSU</span>';
-                    }}
-                  />
-                </div>
-                <div className="absolute inset-0 w-20 h-20 sm:w-24 sm:h-24 mx-auto bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl blur-xl opacity-30 animate-pulse-glow"></div>
-              </div>
+<div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto bg-transparent rounded-2xl flex items-center justify-center p-2 sm:p-3">
+  <img 
+    src="/nfsu-logo.png" 
+    alt="NFSU Logo" 
+    className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(14,165,233,0.6)]"
+    onError={(e) => {
+      // Fallback if image not found
+      e.target.style.display = 'none';
+      e.target.parentElement.innerHTML = '<span class="text-cyan-400 font-bold text-3xl drop-shadow-[0_0_20px_rgba(6,182,212,0.8)]">NFSU</span>';
+    }}
+  />
+</div>
+<div className="absolute inset-0 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl blur-2xl opacity-50 animate-pulse-glow"></div>
+</div>
             </div>
             
             <h1 className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 tracking-wider transition-all duration-300 flex flex-wrap items-center justify-center gap-1">
