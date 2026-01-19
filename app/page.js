@@ -102,20 +102,33 @@ export default function Home() {
             </div>
             
             <h1 className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 tracking-wider transition-all duration-300 flex flex-wrap items-center justify-center gap-1">
-  <span className="text-cyan-400/60 text-xl sm:text-2xl md:text-3xl font-light">&lt;/</span>
+  <span 
+    className={`text-cyan-400/60 text-xl sm:text-2xl md:text-3xl font-light ${cyberFonts[fontIndex]}`}
+  >
+    &lt;/
+  </span>
   <span 
     className={`bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-text-glow ${cyberFonts[fontIndex]} text-center`}
   >
     Securing the Digital Future
   </span>
-  <span className="text-cyan-400/60 text-xl sm:text-2xl md:text-3xl font-light">&gt;</span>
+  <span 
+    className={`text-cyan-400/60 text-xl sm:text-2xl md:text-3xl font-light ${cyberFonts[fontIndex]}`}
+  >
+    &gt;
+  </span>
 </h1>
 
+
 <p className="text-cyan-400/80 font-medium text-xs sm:text-sm md:text-base tracking-[0.15em] sm:tracking-[0.2em] uppercase mt-3 sm:mt-4 px-2">
+  Roadmap for Cybersecurity Education and Talent Development
+</p>
+<p className="text-blue-400/70 font-semibold text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase mt-2 px-2">
   National Forensic Sciences University
 </p>
 <p className="text-blue-400/70 font-semibold text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase mt-2 px-2">PANEL DISCUSSION FEEDBACK</p>
-            <div className="mt-3 sm:mt-4 h-1 w-24 sm:w-32 mx-auto bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-pulse"></div>
+<div className="mt-3 sm:mt-4 h-1 w-24 sm:w-32 mx-auto bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-pulse"></div>
+
           </div>
 
           {/* Form Card */}
