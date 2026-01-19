@@ -137,24 +137,31 @@ export default function Feedback() {
     }
   };
 
-  const handleResponseChange = (panelId, questionIndex, field, value) => {
+  const handleRatingChange = (panelId, questionIndex, rating) => {
     setResponses(prev => ({
       ...prev,
-      [`panel${panelId}_q${questionIndex}`]: {
-        ...prev[`panel${panelId}_q${questionIndex}`],
-        [field]: value
-      }
+      [`panel${panelId}_q${questionIndex}`]: rating
     }));
   };
 
   const submitPanelFeedback = async (panelId) => {
+    const panel = panels.find(p => p.id === panelId);
+    
+    // Check if all questions are answered
+    const allAnswered = panel.questions.every((_, idx) => 
+      responses[`panel${panelId}_q${idx}`]
+    );
+
+    if (!allAnswered) {
+      alert('Please rate all questions before submitting.');
+      return;
+    }
+
     setLoading(true);
     try {
-      const panel = panels.find(p => p.id === panelId);
       const panelResponses = panel.questions.map((question, idx) => ({
         question,
-        answer: responses[`panel${panelId}_q${idx}`]?.answer || '',
-        comment: responses[`panel${panelId}_q${idx}`]?.comment || ''
+        rating: responses[`panel${panelId}_q${idx}`] || 0
       }));
 
       await fetch('/api/submit-feedback', {
@@ -198,23 +205,34 @@ export default function Feedback() {
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent animate-scan-line"></div>
       <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent animate-scan-line-slow"></div>
       
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10">
         {/* User Card */}
         <div className="backdrop-blur-xl bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-cyan-500/30 rounded-xl sm:rounded-2xl shadow-[0_0_30px_rgba(6,182,212,0.15)] sm:shadow-[0_0_50px_rgba(6,182,212,0.15)] p-4 sm:p-6 mb-4 sm:mb-6 animate-fade-in relative overflow-hidden">
           <div className="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t-2 border-l-2 border-cyan-400/50"></div>
           <div className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t-2 border-r-2 border-cyan-400/50"></div>
           
-          <div className="flex items-center gap-3 sm:gap-4 relative z-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 relative z-10">
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg sm:rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(14,165,233,0.5)] sm:shadow-[0_0_30px_rgba(14,165,233,0.5)] flex-shrink-0">
               <span className="text-xl sm:text-2xl text-white font-bold">{participantInfo.name.charAt(0)}</span>
             </div>
-            <div className="min-w-0">
-              <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 tracking-wide truncate">
+            <div className="flex-1 min-w-0">
+              <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 tracking-wide">
                 Welcome, <span className="text-cyan-400">{participantInfo.name}</span>
               </h1>
-              <p className="text-slate-400 font-medium tracking-wide text-xs sm:text-sm md:text-base truncate">
-                {participantInfo.designation} • {participantInfo.organization}
-              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                <p className="text-slate-400 font-medium">
+                  <span className="text-cyan-400/70">Designation:</span> {participantInfo.designation}
+                </p>
+                <p className="text-slate-400 font-medium">
+                  <span className="text-cyan-400/70">Organization:</span> {participantInfo.organization}
+                </p>
+                <p className="text-slate-400 font-medium">
+                  <span className="text-cyan-400/70">Phone:</span> {participantInfo.phone}
+                </p>
+                <p className="text-slate-400 font-medium truncate">
+                  <span className="text-cyan-400/70">Email:</span> {participantInfo.email}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -272,46 +290,67 @@ export default function Feedback() {
 
                   {!submitted[panel.id] ? (
                     <>
-                      <div className="space-y-4 sm:space-y-5 relative z-10">
-                        {panel.questions.map((question, idx) => (
-                          <div key={idx} className="bg-slate-900/50 border border-blue-500/20 rounded-lg sm:rounded-xl p-3 sm:p-5 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)] relative">
-                            <p className="font-semibold text-white mb-3 sm:mb-4 text-sm sm:text-base flex items-start gap-2 sm:gap-3 tracking-wide">
-                              <span className="text-cyan-400 flex-shrink-0 font-bold text-sm sm:text-base">{idx + 1}.</span>
-                              <span>{question}</span>
-                            </p>
-                            
-                            <div className="flex gap-4 sm:gap-6 mb-3 sm:mb-4">
-                              <label className="flex items-center cursor-pointer group">
-                                <input
-                                  type="radio"
-                                  name={`panel${panel.id}_q${idx}`}
-                                  value="Yes"
-                                  onChange={(e) => handleResponseChange(panel.id, idx, 'answer', e.target.value)}
-                                  className="mr-2 sm:mr-3 w-4 h-4 sm:w-5 sm:h-5 text-cyan-500 focus:ring-cyan-500 cursor-pointer bg-slate-800 border-cyan-500/50"
-                                  required
-                                />
-                                <span className="text-slate-300 font-bold group-hover:text-cyan-400 transition-colors tracking-wide uppercase text-xs sm:text-sm">Yes</span>
-                              </label>
-                              
-                              <label className="flex items-center cursor-pointer group">
-                                <input
-                                  type="radio"
-                                  name={`panel${panel.id}_q${idx}`}
-                                  value="No"
-                                  onChange={(e) => handleResponseChange(panel.id, idx, 'answer', e.target.value)}
-                                  className="mr-2 sm:mr-3 w-4 h-4 sm:w-5 sm:h-5 text-cyan-500 focus:ring-cyan-500 cursor-pointer bg-slate-800 border-cyan-500/50"
-                                  required
-                                />
-                                <span className="text-slate-300 font-bold group-hover:text-cyan-400 transition-colors tracking-wide uppercase text-xs sm:text-sm">No</span>
-                              </label>
-                            </div>
+                      {/* Rating Scale Legend */}
+                      <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-slate-800/50 border border-blue-500/20 rounded-lg">
+                        <p className="text-cyan-400 font-semibold text-xs sm:text-sm mb-2 uppercase tracking-wider">Rating Scale:</p>
+                        <div className="grid grid-cols-5 gap-1 sm:gap-2 text-center text-xs sm:text-sm">
+                          <div className="text-slate-400">
+                            <div className="font-bold text-red-400">1</div>
+                            <div className="hidden sm:block">Poor</div>
+                          </div>
+                          <div className="text-slate-400">
+                            <div className="font-bold text-orange-400">2</div>
+                            <div className="hidden sm:block">Fair</div>
+                          </div>
+                          <div className="text-slate-400">
+                            <div className="font-bold text-yellow-400">3</div>
+                            <div className="hidden sm:block">Good</div>
+                          </div>
+                          <div className="text-slate-400">
+                            <div className="font-bold text-blue-400">4</div>
+                            <div className="hidden sm:block">Very Good</div>
+                          </div>
+                          <div className="text-slate-400">
+                            <div className="font-bold text-green-400">5</div>
+                            <div className="hidden sm:block">Excellent</div>
+                          </div>
+                        </div>
+                      </div>
 
-                            <textarea
-                              placeholder="Add your comments here (optional)"
-                              onChange={(e) => handleResponseChange(panel.id, idx, 'comment', e.target.value)}
-                              className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-slate-900/80 border border-blue-500/30 rounded-lg sm:rounded-xl focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/50 transition-all duration-300 text-white placeholder-slate-600 tracking-wide text-sm sm:text-base"
-                              rows="2"
-                            />
+                      <div className="space-y-3 sm:space-y-4 relative z-10">
+                        {panel.questions.map((question, idx) => (
+                          <div key={idx} className="bg-slate-900/50 border border-blue-500/20 rounded-lg sm:rounded-xl p-3 sm:p-4 hover:border-cyan-400/50 transition-all duration-300">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+                              {/* Question */}
+                              <div className="flex-1 min-w-0">
+                                <p className="font-semibold text-white text-xs sm:text-sm md:text-base flex items-start gap-2">
+                                  <span className="text-cyan-400 flex-shrink-0 font-bold">{idx + 1}.</span>
+                                  <span>{question}</span>
+                                </p>
+                              </div>
+                              
+                              {/* Rating Buttons */}
+                              <div className="flex gap-1 sm:gap-2 justify-center sm:justify-end flex-shrink-0">
+                                {[1, 2, 3, 4, 5].map((rating) => (
+                                  <button
+                                    key={rating}
+                                    type="button"
+                                    onClick={() => handleRatingChange(panel.id, idx, rating)}
+                                    className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg font-bold text-xs sm:text-sm md:text-base transition-all duration-300 ${
+                                      responses[`panel${panel.id}_q${idx}`] === rating
+                                        ? rating === 1 ? 'bg-red-500 text-white shadow-[0_0_15px_rgba(239,68,68,0.5)]'
+                                        : rating === 2 ? 'bg-orange-500 text-white shadow-[0_0_15px_rgba(249,115,22,0.5)]'
+                                        : rating === 3 ? 'bg-yellow-500 text-white shadow-[0_0_15px_rgba(234,179,8,0.5)]'
+                                        : rating === 4 ? 'bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]'
+                                        : 'bg-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.5)]'
+                                      : 'bg-slate-800/50 text-slate-400 border border-slate-700 hover:border-cyan-400/50 hover:text-white'
+                                    }`}
+                                  >
+                                    {rating}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -354,12 +393,9 @@ export default function Feedback() {
         )}
 
         {/* Footer */}
-        <div className="text-center mt-6 sm:mt-8 pb-4 space-y-1 sm:space-y-2 px-2">
+        <div className="text-center mt-6 sm:mt-8 pb-4 px-2">
           <p className="text-slate-500 text-xs sm:text-sm tracking-wide">
             © National Forensic Sciences University, Delhi Campus
-          </p>
-          <p className="text-slate-600 text-[10px] sm:text-xs tracking-wider">
-            Created and Managed by <span className="text-cyan-500/70 font-medium">Tamanna Khurana</span>
           </p>
         </div>
       </div>

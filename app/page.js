@@ -6,8 +6,9 @@ export default function Home() {
   const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
-    organization: '',
     designation: '',
+    organization: '',
+    phone: '',
     email: ''
   });
   const [loading, setLoading] = useState(false);
@@ -83,12 +84,20 @@ export default function Home() {
           <div className="text-center mb-6 sm:mb-8 animate-fade-in">
             <div className="mb-4 sm:mb-6 inline-block">
               <div className="relative">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto bg-gradient-to-br from-blue-500 via-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(14,165,233,0.5)] sm:shadow-[0_0_50px_rgba(14,165,233,0.5)]">
-                  <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                  </svg>
+                {/* NFSU Logo */}
+                <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto bg-white rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(14,165,233,0.5)] sm:shadow-[0_0_50px_rgba(14,165,233,0.5)] p-2">
+                  <img 
+                    src="/nfsu-logo.png" 
+                    alt="NFSU Logo" 
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      // Fallback if image not found
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<span class="text-blue-600 font-bold text-2xl">NFSU</span>';
+                    }}
+                  />
                 </div>
-                <div className="absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 mx-auto bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl blur-xl opacity-50 animate-pulse-glow"></div>
+                <div className="absolute inset-0 w-20 h-20 sm:w-24 sm:h-24 mx-auto bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl blur-xl opacity-30 animate-pulse-glow"></div>
               </div>
             </div>
             
@@ -136,6 +145,21 @@ export default function Home() {
               <div className="group">
                 <label className="block text-xs sm:text-sm font-bold text-cyan-400 mb-2 uppercase tracking-[0.15em] sm:tracking-[0.2em] flex items-center gap-2">
                   <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+                  Designation
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.designation}
+                  onChange={(e) => setFormData({...formData, designation: e.target.value})}
+                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-slate-900/50 border-2 border-blue-500/30 rounded-xl focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/50 transition-all duration-300 text-white placeholder-slate-500 font-medium tracking-wide text-sm sm:text-base"
+                  placeholder="Your designation"
+                />
+              </div>
+
+              <div className="group">
+                <label className="block text-xs sm:text-sm font-bold text-cyan-400 mb-2 uppercase tracking-[0.15em] sm:tracking-[0.2em] flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
                   Organization
                 </label>
                 <input
@@ -151,15 +175,15 @@ export default function Home() {
               <div className="group">
                 <label className="block text-xs sm:text-sm font-bold text-cyan-400 mb-2 uppercase tracking-[0.15em] sm:tracking-[0.2em] flex items-center gap-2">
                   <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
-                  Designation
+                  Phone Number
                 </label>
                 <input
-                  type="text"
+                  type="tel"
                   required
-                  value={formData.designation}
-                  onChange={(e) => setFormData({...formData, designation: e.target.value})}
+                  value={formData.phone}
+                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-slate-900/50 border-2 border-blue-500/30 rounded-xl focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/50 transition-all duration-300 text-white placeholder-slate-500 font-medium tracking-wide text-sm sm:text-base"
-                  placeholder="Your designation"
+                  placeholder="+91 XXXXX XXXXX"
                 />
               </div>
 
@@ -208,12 +232,9 @@ export default function Home() {
           </div>
 
           {/* Footer */}
-          <div className="text-center mt-6 sm:mt-8 pb-4 space-y-1 sm:space-y-2 px-2">
+          <div className="text-center mt-6 sm:mt-8 pb-4 px-2">
             <p className="text-slate-500 text-xs sm:text-sm tracking-wide">
               © National Forensic Sciences University, Delhi Campus
-            </p>
-            <p className="text-slate-600 text-[10px] sm:text-xs tracking-wider">
-              Created and Managed by <span className="text-cyan-500/70 font-medium">Tamanna Khurana</span>
             </p>
           </div>
         </div>
