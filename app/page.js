@@ -11,6 +11,7 @@ export default function Home() {
     phone: '',
     email: ''
   });
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [fontIndex, setFontIndex] = useState(0);
 
@@ -35,8 +36,64 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  const validatePhone = (phone) => {
+    // Indian phone number: 10 digits, can start with optional +91
+    const phoneRegex = /^(\+91[\s]?)?[6-9]\d{9}$/;
+    return phoneRegex.test(phone.replace(/\s/g, ''));
+  };
+
+  const validateEmail = (email) => {
+    // Standard email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handlePhoneChange = (e) => {
+    const phone = e.target.value;
+    setFormData({...formData, phone});
+    
+    if (phone && !validatePhone(phone)) {
+      setErrors({...errors, phone: 'Please enter a valid 10-digit phone number'});
+    } else {
+      const newErrors = {...errors};
+      delete newErrors.phone;
+      setErrors(newErrors);
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const email = e.target.value;
+    setFormData({...formData, email});
+    
+    if (email && !validateEmail(email)) {
+      setErrors({...errors, email: 'Please enter a valid email address'});
+    } else {
+      const newErrors = {...errors};
+      delete newErrors.email;
+      setErrors(newErrors);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Final validation
+    const newErrors = {};
+    
+    if (!validatePhone(formData.phone)) {
+      newErrors.phone = 'Please enter a valid 10-digit phone number';
+    }
+    
+    if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+    
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      alert('Please correct the errors in the form before submitting.');
+      return;
+    }
+    
     setLoading(true);
 
     try {
@@ -85,55 +142,44 @@ export default function Home() {
             <div className="mb-4 sm:mb-6 inline-block">
               <div className="relative">
                 {/* NFSU Logo */}
-<div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto bg-transparent rounded-2xl flex items-center justify-center p-2 sm:p-3">
-  <img 
-    src="/nfsu-logo.png" 
-    alt="NFSU Logo" 
-    className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(14,165,233,0.6)]"
-    onError={(e) => {
-      // Fallback if image not found
-      e.target.style.display = 'none';
-      e.target.parentElement.innerHTML = '<span class="text-cyan-400 font-bold text-3xl drop-shadow-[0_0_20px_rgba(6,182,212,0.8)]">NFSU</span>';
-    }}
-  />
-</div>
-<div className="absolute inset-0 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl blur-2xl opacity-50 animate-pulse-glow"></div>
-</div>
+                <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto bg-transparent rounded-2xl flex items-center justify-center p-2 sm:p-3">
+                  <img 
+                    src="/nfsu-logo.png" 
+                    alt="NFSU Logo" 
+                    className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(14,165,233,0.6)]"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<span class="text-cyan-400 font-bold text-3xl drop-shadow-[0_0_20px_rgba(6,182,212,0.8)]">NFSU</span>';
+                    }}
+                  />
+                </div>
+                <div className="absolute inset-0 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl blur-2xl opacity-50 animate-pulse-glow"></div>
+              </div>
             </div>
             
             <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-2 sm:mb-3 tracking-wider transition-all duration-300 flex items-center justify-center gap-2 flex-wrap">
-  <span 
-    className={`text-cyan-400/60 font-light ${cyberFonts[fontIndex]}`}
-  >
-    &lt;/Securing
-  </span>
-  <span 
-    className={`bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-text-glow ${cyberFonts[fontIndex]}`}
-  >
-    the
-  </span>
-  <span 
-    className={`bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-text-glow ${cyberFonts[fontIndex]}`}
-  >
-    Digital
-  </span>
-  <span 
-    className={`text-cyan-400/60 font-light ${cyberFonts[fontIndex]}`}
-  >
-    Future&gt;
-  </span>
-</h1>
+              <span className={`text-cyan-400/60 font-light ${cyberFonts[fontIndex]}`}>
+                &lt;/Securing
+              </span>
+              <span className={`bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-text-glow ${cyberFonts[fontIndex]}`}>
+                the
+              </span>
+              <span className={`bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-text-glow ${cyberFonts[fontIndex]}`}>
+                Digital
+              </span>
+              <span className={`text-cyan-400/60 font-light ${cyberFonts[fontIndex]}`}>
+                Future&gt;
+              </span>
+            </h1>
 
-
-<p className="text-cyan-400/80 font-medium text-xs sm:text-sm md:text-base tracking-[0.15em] sm:tracking-[0.2em] uppercase mt-3 sm:mt-4 px-2">
-  Roadmap for Cybersecurity Education and Talent Development
-</p>
-<p className="text-blue-400/70 font-semibold text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase mt-2 px-2">
-  National Forensic Sciences University
-</p>
-<p className="text-blue-400/70 font-semibold text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase mt-2 px-2">PANEL DISCUSSION FEEDBACK</p>
-<div className="mt-3 sm:mt-4 h-1 w-24 sm:w-32 mx-auto bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-pulse"></div>
-
+            <p className="text-cyan-400/80 font-medium text-xs sm:text-sm md:text-base tracking-[0.15em] sm:tracking-[0.2em] uppercase mt-3 sm:mt-4 px-2">
+              Roadmap for Cybersecurity Education and Talent Development
+            </p>
+            <p className="text-blue-400/70 font-semibold text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase mt-2 px-2">
+              National Forensic Sciences University
+            </p>
+            <p className="text-blue-400/70 font-semibold text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase mt-2 px-2">PANEL DISCUSSION FEEDBACK</p>
+            <div className="mt-3 sm:mt-4 h-1 w-24 sm:w-32 mx-auto bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-pulse"></div>
           </div>
 
           {/* Form Card */}
@@ -199,10 +245,19 @@ export default function Home() {
                   type="tel"
                   required
                   value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-slate-900/50 border-2 border-blue-500/30 rounded-xl focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/50 transition-all duration-300 text-white placeholder-slate-500 font-medium tracking-wide text-sm sm:text-base"
+                  onChange={handlePhoneChange}
+                  className={`w-full px-3 py-2 sm:px-4 sm:py-3 bg-slate-900/50 border-2 rounded-xl focus:ring-2 transition-all duration-300 text-white placeholder-slate-500 font-medium tracking-wide text-sm sm:text-base ${
+                    errors.phone 
+                      ? 'border-red-500/50 focus:border-red-400 focus:ring-red-400/50' 
+                      : 'border-blue-500/30 focus:border-cyan-400 focus:ring-cyan-400/50'
+                  }`}
                   placeholder="+91 XXXXX XXXXX"
                 />
+                {errors.phone && (
+                  <p className="mt-1 text-xs sm:text-sm text-red-400 flex items-center gap-1">
+                    <span>⚠</span> {errors.phone}
+                  </p>
+                )}
               </div>
 
               <div className="group">
@@ -214,16 +269,25 @@ export default function Home() {
                   type="email"
                   required
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-slate-900/50 border-2 border-blue-500/30 rounded-xl focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/50 transition-all duration-300 text-white placeholder-slate-500 font-medium tracking-wide text-sm sm:text-base"
+                  onChange={handleEmailChange}
+                  className={`w-full px-3 py-2 sm:px-4 sm:py-3 bg-slate-900/50 border-2 rounded-xl focus:ring-2 transition-all duration-300 text-white placeholder-slate-500 font-medium tracking-wide text-sm sm:text-base ${
+                    errors.email 
+                      ? 'border-red-500/50 focus:border-red-400 focus:ring-red-400/50' 
+                      : 'border-blue-500/30 focus:border-cyan-400 focus:ring-cyan-400/50'
+                  }`}
                   placeholder="your.email@example.com"
                 />
+                {errors.email && (
+                  <p className="mt-1 text-xs sm:text-sm text-red-400 flex items-center gap-1">
+                    <span>⚠</span> {errors.email}
+                  </p>
+                )}
               </div>
 
               <button
                 type="submit"
-                disabled={loading}
-                className="w-full relative group mt-6"
+                disabled={loading || Object.keys(errors).length > 0}
+                className="w-full relative group mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity"></div>
                 <div className="relative bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3 px-4 sm:py-4 sm:px-6 rounded-xl transition-all duration-300 uppercase tracking-[0.15em] sm:tracking-[0.2em] shadow-lg text-sm sm:text-base">
@@ -250,9 +314,12 @@ export default function Home() {
           </div>
 
           {/* Footer */}
-          <div className="text-center mt-6 sm:mt-8 pb-4 px-2">
+          <div className="text-center mt-6 sm:mt-8 pb-4 space-y-1 px-2">
             <p className="text-slate-500 text-xs sm:text-sm tracking-wide">
               © National Forensic Sciences University, Delhi Campus
+            </p>
+            <p className="text-slate-600 text-[10px] sm:text-xs tracking-wide">
+              Created and managed by Tamanna Khurana
             </p>
           </div>
         </div>
