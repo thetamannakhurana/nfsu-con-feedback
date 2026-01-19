@@ -21,25 +21,27 @@ export default function Feedback() {
         { type: 'rating', text: 'How effective was the session in connecting you with the right mentors or peers?' },
         { type: 'rating', text: 'How effectively did the panel assess the strengths and weaknesses of the current landscape of cybersecurity education?' },
         { 
-          type: 'mcq', 
+          type: 'multicorrect', 
           text: 'In your opinion, what is the most important thing that needs to be improved/included in Indian Cyber Education right now?',
-          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others']
+          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others'],
+          hasOtherTextbox: true
         },
         { type: 'yesno', text: 'Do you feel the need for improvement in teaching pedagogy for cybersecurity awareness in India?' },
         { type: 'rating', text: 'How do you rate the industry efforts on Cybersecurity education and awareness in India?' },
         { 
-          type: 'mcq', 
-          text: 'What do you perceive as the most significant roadblock of the panel discussion "The Current State of Cybersecurity Education"?',
+          type: 'multicorrect', 
+          text: 'What do you perceive as the most significant roadblock for Cybersecurity Education?',
           options: [
             'Lack of a standardized national curriculum',
             'Limited infrastructure and funding in schools',
             'Rapidly Evolving Threats leading to a disconnect from the academic syllabus',
             'Lack of Cyber Awareness among citizens',
             'Other'
-          ]
+          ],
+          hasOtherTextbox: true
         },
-        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific panel topic at the next conference?' },
-        { type: 'rating', text: 'What is your overall rating for this specific panel session?' },
+        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific topic at the next conference?' },
+        { type: 'rating', text: 'What is your overall rating for this specific session?' },
         { type: 'comment', text: 'What is one "Key Takeaway" from today that you would like to get implemented in your organization/institute?' },
         { type: 'comment', text: 'Do you have any other suggestions/remarks for the conference?' }
       ]
@@ -56,11 +58,11 @@ export default function Feedback() {
         { type: 'rating', text: 'How effective was the session in connecting you with the right mentors or peers?' },
         { type: 'rating', text: 'How effectively did the panel assess the strengths and weaknesses of the current landscape of cybersecurity education?' },
         { 
-          type: 'mcq', 
+          type: 'multicorrect', 
           text: 'In your opinion, what is the most important thing that needs to be improved/included in Indian Cyber Education right now?',
-          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others']
+          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others'],
+          hasOtherTextbox: true
         },
-        { type: 'yesno', text: 'Do you feel the need for improvement in teaching pedagogy for cybersecurity awareness in India?' },
         { 
           type: 'mcq', 
           text: 'Do you prefer a Standardized National Curriculum (one syllabus for all) or University Autonomy (institutes design their own)?',
@@ -76,20 +78,21 @@ export default function Feedback() {
             'Real-time (Continuous updates via Industry Partners)'
           ]
         },
-        { type: 'yesno', text: 'Can we establish a \'Student Cyber Volunteer Corps\' where students earn credits for managing helplines such as \'1930\'?' },
+        { type: 'yesno', text: 'Can a \'Student Cyber Volunteer Corps\' be established where students earn credits for managing helplines such as \'1930\'?' },
         { 
-          type: 'mcq', 
-          text: 'What do you perceive as the most significant roadblock of the panel discussion "Designing a Future-Ready Cybersecurity Curriculum"?',
+          type: 'multicorrect', 
+          text: 'What do you perceive as the most significant roadblock in "Designing a Future-Ready Cybersecurity Curriculum"?',
           options: [
             'Acute Teacher shortage',
             'Inadequate teacher training',
             'Digital divide and infrastructure gaps',
             'Uneven implementation and funding issues',
-            'Others'
-          ]
+            'Other'
+          ],
+          hasOtherTextbox: true
         },
-        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific panel topic at the next conference?' },
-        { type: 'rating', text: 'What is your overall rating for this specific panel session?' },
+        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific topic at the next conference?' },
+        { type: 'rating', text: 'What is your overall rating for this specific session?' },
         { type: 'comment', text: 'What is one "Key Takeaway" from today that you would like to get implemented in your organization/institute?' },
         { type: 'comment', text: 'Do you have any other suggestions/remarks for the conference?' }
       ]
@@ -106,11 +109,11 @@ export default function Feedback() {
         { type: 'rating', text: 'How effective was the session in connecting you with the right mentors or peers?' },
         { type: 'rating', text: 'How effectively did the panel assess the strengths and weaknesses of the current landscape of cybersecurity education?' },
         { 
-          type: 'mcq', 
+          type: 'multicorrect', 
           text: 'In your opinion, what is the most important thing that needs to be improved/included in Indian Cyber Education right now?',
-          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others']
+          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others'],
+          hasOtherTextbox: true
         },
-        { type: 'yesno', text: 'Do you feel the need for improvement in teaching pedagogy for cybersecurity awareness in India?' },
         { type: 'yesno', text: 'Do you feel there is a significant gap between the number of people who consider careers in cybersecurity and those in SDE/AI/ML/Data Science?' },
         { type: 'yesno', text: 'Does the current education curriculum (up to Senior Secondary level) cover enough cybersecurity fundamentals to invoke interest in talented students about the field?' },
         { 
@@ -118,24 +121,25 @@ export default function Feedback() {
           text: 'What would you consider a major obstacle for someone aspiring to be a cybersecurity professional?',
           options: [
             'Payscale',
-            'Weak advertisement (As in the field being niche)',
+            'Weak advertisement',
             'Pricing of Certifications',
             'Infrastructural restrictions'
           ]
         },
         { 
-          type: 'mcq', 
-          text: 'What do you perceive as the most significant roadblock of the panel discussion "Attracting talent to cybersecurity: Challenges and Opportunities"?',
+          type: 'multicorrect', 
+          text: 'What do you perceive as the most significant roadblock in attracting talents to cyber security?',
           options: [
             'Uncompetitive salaries and reluctance to upscale',
             'Lack of soft skills and niche expertise',
             'Poor awareness and stigma',
             'Regional skill disparities',
             'Others'
-          ]
+          ],
+          hasOtherTextbox: true
         },
-        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific panel topic at the next conference?' },
-        { type: 'rating', text: 'What is your overall rating for this specific panel session?' },
+        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific topic at the next conference?' },
+        { type: 'rating', text: 'What is your overall rating for this specific session?' },
         { type: 'comment', text: 'What is one "Key Takeaway" from today that you would like to get implemented in your organization/institute?' },
         { type: 'comment', text: 'Do you have any other suggestions/remarks for the conference?' }
       ]
@@ -152,26 +156,27 @@ export default function Feedback() {
         { type: 'rating', text: 'How effective was the session in connecting you with the right mentors or peers?' },
         { type: 'rating', text: 'How effectively did the panel assess the strengths and weaknesses of the current landscape of cybersecurity education?' },
         { 
-          type: 'mcq', 
+          type: 'multicorrect', 
           text: 'In your opinion, what is the most important thing that needs to be improved/included in Indian Cyber Education right now?',
-          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others']
+          options: ['Curriculum', 'Labs', 'FDPs', 'Certifications', 'Others'],
+          hasOtherTextbox: true
         },
-        { type: 'yesno', text: 'Do you feel the need for improvement in teaching pedagogy for cybersecurity awareness in India?' },
         { type: 'yesno', text: 'Did the discussion provide actionable insights on how academic programs can better align with real-world cybersecurity threats?' },
         { type: 'rating', text: 'On a scale of 1-5, how severe is the disconnect between academia and industry?' },
         { 
-          type: 'mcq', 
-          text: 'What do you perceive as the most significant roadblock of the panel discussion "Bridging Academia and Industry in Cybersecurity Education"?',
+          type: 'multicorrect', 
+          text: 'What do you perceive as the most significant roadblock in bridging Academia and Industry in Cybersecurity Education?',
           options: [
             'Curriculum misalignment',
             'Gaps in industry-academia collaboration',
             'Evaluation criteria mismatch',
             'Lack of startup ecosystem integration',
             'Others'
-          ]
+          ],
+          hasOtherTextbox: true
         },
-        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific panel topic at the next conference?' },
-        { type: 'rating', text: 'What is your overall rating for this specific panel session?' },
+        { type: 'yesno', text: 'Would you want a "Deep Dive" workshop on this specific topic at the next conference?' },
+        { type: 'rating', text: 'What is your overall rating for this specific session?' },
         { type: 'comment', text: 'What is one "Key Takeaway" from today that you would like to get implemented in your organization/institute?' },
         { type: 'comment', text: 'What is one topic related to cybersecurity education that was not covered but should be included in future panels?' },
         { type: 'rating', text: 'In your opinion, did all of the panel discussions align with the objectives of the conference "Roadmap for Cybersecurity Education and Talent Development"?' },
@@ -209,13 +214,42 @@ export default function Feedback() {
     }));
   };
 
+  const handleMultiCorrectChange = (panelId, questionIndex, option) => {
+    const key = `panel${panelId}_q${questionIndex}`;
+    const current = responses[key] || { selected: [], otherText: '' };
+    
+    const isSelected = current.selected.includes(option);
+    const newSelected = isSelected
+      ? current.selected.filter(item => item !== option)
+      : [...current.selected, option];
+    
+    setResponses(prev => ({
+      ...prev,
+      [key]: { ...current, selected: newSelected }
+    }));
+  };
+
+  const handleOtherTextChange = (panelId, questionIndex, text) => {
+    const key = `panel${panelId}_q${questionIndex}`;
+    const current = responses[key] || { selected: [], otherText: '' };
+    
+    setResponses(prev => ({
+      ...prev,
+      [key]: { ...current, otherText: text }
+    }));
+  };
+
   const submitPanelFeedback = async (panelId) => {
     const panel = panels.find(p => p.id === panelId);
     
     // Check if all questions are answered
-    const allAnswered = panel.questions.every((_, idx) => 
-      responses[`panel${panelId}_q${idx}`]
-    );
+    const allAnswered = panel.questions.every((question, idx) => {
+      const response = responses[`panel${panelId}_q${idx}`];
+      if (question.type === 'multicorrect') {
+        return response && response.selected && response.selected.length > 0;
+      }
+      return response !== undefined && response !== '';
+    });
 
     if (!allAnswered) {
       alert('Please answer all questions before submitting.');
@@ -224,11 +258,24 @@ export default function Feedback() {
 
     setLoading(true);
     try {
-      const panelResponses = panel.questions.map((question, idx) => ({
-        question: question.text,
-        type: question.type,
-        answer: responses[`panel${panelId}_q${idx}`] || ''
-      }));
+      const panelResponses = panel.questions.map((question, idx) => {
+        const response = responses[`panel${panelId}_q${idx}`];
+        
+        if (question.type === 'multicorrect') {
+          return {
+            question: question.text,
+            type: question.type,
+            answer: response.selected.join(', '),
+            otherText: response.otherText || ''
+          };
+        }
+        
+        return {
+          question: question.text,
+          type: question.type,
+          answer: response || ''
+        };
+      });
 
       await fetch('/api/submit-feedback', {
         method: 'POST',
@@ -436,6 +483,43 @@ export default function Feedback() {
                               </div>
                             )}
 
+                            {/* Multi-Correct Type (Checkboxes) */}
+                            {question.type === 'multicorrect' && (
+                              <div className="space-y-2">
+                                {question.options.map((option, optIdx) => {
+                                  const currentResponse = responses[`panel${panel.id}_q${idx}`] || { selected: [], otherText: '' };
+                                  const isChecked = currentResponse.selected.includes(option);
+                                  const showTextbox = question.hasOtherTextbox && 
+                                    (option === 'Others' || option === 'Other') && 
+                                    isChecked;
+                                  
+                                  return (
+                                    <div key={optIdx}>
+                                      <label className="flex items-start gap-3 px-4 py-3 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 cursor-pointer hover:bg-slate-800/50 border border-slate-700 hover:border-cyan-400/50">
+                                        <input
+                                          type="checkbox"
+                                          checked={isChecked}
+                                          onChange={() => handleMultiCorrectChange(panel.id, idx, option)}
+                                          className="mt-0.5 w-5 h-5 text-cyan-500 bg-slate-800 border-slate-600 rounded focus:ring-cyan-500 focus:ring-2 cursor-pointer"
+                                        />
+                                        <span className="text-slate-300 flex-1">{option}</span>
+                                      </label>
+                                      
+                                      {showTextbox && (
+                                        <textarea
+                                          placeholder="Please specify..."
+                                          value={currentResponse.otherText || ''}
+                                          onChange={(e) => handleOtherTextChange(panel.id, idx, e.target.value)}
+                                          className="w-full mt-2 px-3 py-2 sm:px-4 sm:py-3 bg-slate-900/80 border border-cyan-500/30 rounded-lg focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/50 transition-all duration-300 text-white placeholder-slate-600 tracking-wide text-xs sm:text-sm min-h-[60px]"
+                                          rows="2"
+                                        />
+                                      )}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            )}
+
                             {/* Comment Type */}
                             {question.type === 'comment' && (
                               <textarea
@@ -488,13 +572,13 @@ export default function Feedback() {
         )}
 
         {/* Footer */}
-        <div className="text-center mt-6 sm:mt-8 pb-4 px-2">
+        <div className="text-center mt-6 sm:mt-8 pb-4 space-y-1 px-2">
           <p className="text-slate-500 text-xs sm:text-sm tracking-wide">
             © National Forensic Sciences University, Delhi Campus
           </p>
           <p className="text-slate-600 text-[10px] sm:text-xs tracking-wide">
-    Created and managed by Tamanna Khurana
-  </p>
+            Created and managed by Tamanna Khurana
+          </p>
         </div>
       </div>
 
