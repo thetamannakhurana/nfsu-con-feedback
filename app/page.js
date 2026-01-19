@@ -101,24 +101,28 @@ export default function Home() {
 </div>
             </div>
             
-            <h1 className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 tracking-wider transition-all duration-300 flex flex-wrap items-center justify-center gap-1">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-2 sm:mb-3 tracking-wider transition-all duration-300 flex items-center justify-center gap-1 flex-wrap">
   <span 
-    className={`text-cyan-400/60 text-xl sm:text-2xl md:text-3xl font-light ${cyberFonts[fontIndex]}`}
+    className={`text-cyan-400/60 font-light ${cyberFonts[fontIndex]}`}
   >
-    &lt;/
+    &lt;/Securing
   </span>
   <span 
-    className={`bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-text-glow ${cyberFonts[fontIndex]} text-center`}
+    className={`bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-text-glow ${cyberFonts[fontIndex]}`}
   >
-    Securing the Digital Future
+    the
   </span>
   <span 
-    className={`text-cyan-400/60 text-xl sm:text-2xl md:text-3xl font-light ${cyberFonts[fontIndex]}`}
+    className={`bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-text-glow ${cyberFonts[fontIndex]}`}
   >
-    &gt;
+    Digital
+  </span>
+  <span 
+    className={`bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-text-glow ${cyberFonts[fontIndex]}`}
+  >
+    Future&gt;
   </span>
 </h1>
-
 
 <p className="text-cyan-400/80 font-medium text-xs sm:text-sm md:text-base tracking-[0.15em] sm:tracking-[0.2em] uppercase mt-3 sm:mt-4 px-2">
   Roadmap for Cybersecurity Education and Talent Development
