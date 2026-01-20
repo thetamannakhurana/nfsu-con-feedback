@@ -185,17 +185,16 @@ export default function Feedback() {
     }
   ];
 
-  useEffect(() => {
-    const info = localStorage.getItem('participantInfo');
-    if (!info) {
-      window.location.href = '/';
-      return;
-    }
-    setParticipantInfo(JSON.parse(info));
-    checkActivePanels();
-    const interval = setInterval(checkActivePanels, 30000);
-    return () => clearInterval(interval);
-  }, []);
+useEffect(() => {
+  const info = localStorage.getItem('participantInfo');
+  if (!info) {
+    window.location.href = '/';
+    return;
+  }
+  setParticipantInfo(JSON.parse(info));
+  checkActivePanels();
+}, []);
+
 
   const checkActivePanels = async () => {
     try {
@@ -364,10 +363,7 @@ export default function Feedback() {
             <p className="text-slate-400 text-sm sm:text-base md:text-lg mb-3 sm:mb-4 tracking-wide px-2">
               Please wait for a panel to end before providing feedback.
             </p>
-            <div className="inline-flex items-center gap-2 text-cyan-400 font-semibold tracking-wide text-xs sm:text-sm">
-              <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
-              Auto-refreshing every 30 seconds
-            </div>
+            
           </div>
         ) : (
           <div className="space-y-4 sm:space-y-6">
